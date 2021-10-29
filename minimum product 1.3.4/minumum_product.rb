@@ -1,5 +1,4 @@
-#I'am still doing... I'am still doing
-
+#minimum_product ready
 #positive then our result should be the first minimum positive number.
 
 # Ruby program to find maximum
@@ -14,19 +13,21 @@ def minProductSubset(a, n)
     if (n == 1)
         return a[0]
     end
+
+    n-=1
  
     # Find count of negative numbers,
     # count of zeros, maximum valued
     # negative number, minimum valued
     # positive number and product
     # of non-zero numbers
-    max_neg = float('-inf')
-    min_pos = float('inf')
+    max_neg = -(2**30)
+    min_pos = 2**30
     count_neg = 0
     count_zero = 0
     prod = 1
 
-    for i in 0..n
+    for i in 0..n do
 
         # If number is 0, we don't
         # multiply it with product.
@@ -38,25 +39,24 @@ def minProductSubset(a, n)
         # Count negatives and keep
         # track of maximum valued
         # negative.
-        if (a[i] < 0)
+        if a[i].to_i < 0
             count_neg = count_neg + 1
-            max_neg = max(max_neg, a[i])
+            max_neg = [max_neg, a[i]].max
         end
  
         # Track minimum positive
         # number of array
-        if (a[i] > 0)
-            min_pos = min(min_pos, a[i])
+        if a[i].to_i > 0
+            min_pos = [min_pos, a[i]].min
         end
- 
+
         prod = prod * a[i]
     end
  
     # If there are all zeros
     # or no negative number
     # present
-    if (count_zero == n or (count_neg == 0
-                            and count_zero > 0))
+    if count_zero == n or (count_neg == 0 and count_zero > 0)
         return 0
     end
  
@@ -68,12 +68,13 @@ def minProductSubset(a, n)
     # If there are even number of
     # negative numbers and count_neg
     # not 0
-    if ((count_neg & 1) == 0 and
-            count_neg != 0):
+    if (count_neg & 1) == 0 and
+            count_neg != 0
  
         # Otherwise result is product of
         # all non-zeros divided by
         # maximum valued negative.
+
         prod = int(prod / max_neg)
     end
  

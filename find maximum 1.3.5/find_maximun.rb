@@ -55,9 +55,9 @@ def maxSum(stack1, stack2, stack3, n1, n2, n3)
 end
   
 # Driven Program
-stack1 = Array[ 3, 2, 1, 1, 1 ]
-stack2 = Array[ 4, 3, 2 ]
-stack3 = Array[ 1, 1, 4, 1 ]
+stack1 = [ 3, 2, 1, 1, 1 ]
+stack2 = [ 4, 3, 2 ]
+stack3 = [ 1, 1, 4, 1 ]
   
 n1 = stack1.length
 n2 = stack2.length
